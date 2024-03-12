@@ -209,3 +209,89 @@ def euler(option):
         x1euler.append(x1nowye)
         tnowy = tnowy + h
         t.append(tnowy)
+
+def rysujx2x1():
+    fig, axs = plt.subplots(4)
+    fig.suptitle('Angle and Angular Velocity Respectivly')
+    axs[0].plot(t, x1)
+    axs[1].plot(t, x2)
+    axs[2].plot(t, x1euler)
+    axs[3].plot(t, x2euler)
+    plt.show()
+    for i in range(1, 500):
+        print(x2[i])
+        print(x2euler[i])
+
+
+class Window(tk.Tk):
+
+    def __init__(self):
+        super().__init__()
+
+        self.title('Projekt MMM')
+        self.geometry("900x700")
+
+        opcja = tk.StringVar()
+
+        # inputs
+        entryn1 = tk.Entry(width=9, border=5)
+        entryn1.place(x=40, y=20)
+        entryn1.insert(0, "1")
+        entryn2 = tk.Entry(width=9, border=5)
+        entryn2.place(x=40, y=70)
+        entryn2.insert(0, "1")
+        entryj1 = tk.Entry(width=9, border=5)
+        entryj1.place(x=40, y=120)
+        entryj1.insert(0, "1")
+        entryj2 = tk.Entry(width=9, border=5)
+        entryj2.place(x=40, y=170)
+        entryj2.insert(0, "1")
+        entryk = tk.Entry(width=9, border=5)
+        entryk.place(x=40, y=220)
+        entryk.insert(0, "1")
+        entryb = tk.Entry(width=9, border=5)
+        entryb.place(x=40, y=270)
+        entryb.insert(0, "1")
+        entrytime = tk.Entry(width=9, border=5)
+        entrytime.place(x=270, y=20)
+        entrytime.insert(0, "50")
+        entryamp = tk.Entry(width=9, border=5)
+        entryamp.place(x=270, y=70)
+        entryamp.insert(0, "10")
+        entryfrq = tk.Entry(width=9, border=5)
+        entryfrq.place(x=270, y=120)
+        entryfrq.insert(0, "1")
+        entryphase = tk.Entry(width=9, border=5)
+        entryphase.place(x=270, y=170)
+        entryphase.insert(0, "1")
+        var = tk.IntVar()
+        # labels that show values of variables
+        labeln1 = tk.Label(text="n1 =")
+        labeln1.place(x=10, y=20)
+
+        labeln2 = tk.Label(text="n2 =")
+        labeln2.place(x=10, y=70)
+
+        labelj1 = tk.Label(text="j1 =")
+        labelj1.place(x=10, y=120)
+
+        labelj2 = tk.Label(text="j2 =")
+        labelj2.place(x=10, y=170)
+
+        labelk = tk.Label(text="k =")
+        labelk.place(x=10, y=220)
+
+        labelb = tk.Label(text="b =")
+        labelb.place(x=10, y=270)
+
+        labeltime = tk.Label(text="simulation time:")
+        labeltime.place(x=160, y=20)
+
+        labelAmp = tk.Label(text="amplitude =")
+        labelAmp.place(x=160, y=70)
+
+        labelFrq = tk.Label(text="frequency =")
+        labelFrq.place(x=160, y=120)
+
+        labelphase = tk.Label(text="phase =")
+        labelphase.place(x=160, y=170)
