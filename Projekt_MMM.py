@@ -158,3 +158,54 @@ def rownanienax2(x2poprzedni, x1poprzedni, aktualnyczas, option):
                 j1 + j2 * n2 / n1)
 
     return x2prim
+
+def RungeKutta4stopnia(option):
+    x1.clear()
+    x2.clear()
+    t.clear()
+    x1.append(0)
+    x2.append(0)
+    t.append(0)
+    tnowy = 0
+
+    # liczenie kolejnych wartości x2 i x1
+    for i in range(1, int(czasTrwania / h)):
+        k1 = h * rownanienax2(x2[i - 1], x1[i - 1], t[i - 1], option)
+        l1 = h * rownanienax1(x2[i - 1])
+
+        k2 = h * rownanienax2(x2[i - 1] + k1 / 2, x1[i - 1] + h / 2, t[i - 1], option)
+        l2 = h * rownanienax1(x2[i - 1] + h / 2)
+
+        k3 = h * rownanienax2(x2[i - 1] + k2 / 2, x1[i - 1] + h / 2, t[i - 1], option)
+        l3 = h * rownanienax1(x2[i - 1] + h / 2)
+
+        k4 = h * rownanienax2(x2[i - 1] + k3, x1[i - 1] + h, t[i - 1], option)
+        l4 = h * rownanienax1(x2[i - 1] + h)
+
+        x2nowy = x2[i - 1] + 1 / 6 * (k1 + 2 * k2 + 2 * k3 + k4)
+        x2.append(x2nowy)
+        x1nowy = x1[i - 1] + 1 / 6 * (l1 + 2 * l2 + 2 * l3 + l4)
+        x1.append(x1nowy)
+        tnowy = tnowy + h
+        t.append(tnowy)
+
+
+def euler(option):
+    x1euler.clear()
+    x2euler.clear()
+    x1euler.append(0)
+    x2euler.append(0)
+    t.clear()
+    t.append(0)
+    tnowy = 0
+
+    for i in range(1, int(czasTrwania / h)):
+        k1 = h * rownanienax2(x2euler[i - 1], x1euler[i - 1], t[i - 1], option)
+        l1 = h * rownanienax1(x2euler[i - 1])
+
+        x2nowye = x2euler[i - 1] + k1
+        x2euler.append(x2nowye)
+        x1nowye = x1euler[i - 1] + l1
+        x1euler.append(x1nowye)
+        tnowy = tnowy + h
+        t.append(tnowy)
