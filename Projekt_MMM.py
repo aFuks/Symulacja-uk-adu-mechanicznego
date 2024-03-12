@@ -295,3 +295,46 @@ class Window(tk.Tk):
 
         labelphase = tk.Label(text="phase =")
         labelphase.place(x=160, y=170)
+
+        # przyciski
+        changeentries = tk.Button(
+            text="Change model's parameters' values", width=24, height=1, bg="gold", fg="black", padx="1", pady="1",
+            command=lambda: [changelicznik(), changelicznik2(), checkData(entryn1),
+                             checkData(entryn2), checkData(entryj1), checkData(entryj2),
+                             checkData(entryk), checkData(entryb),
+                             changeParam(entryn1, entryn2, entryj1, entryj2, entryb, entryk), checkczywszytstkogit()],
+        )
+        changeentries.place(x=10, y=310)
+
+        run = tk.Button(
+            text="Run", width=12, height=3, bg="black", fg="red", padx="1", pady="1",
+            command=lambda: [RungeKutta4stopnia(opcja), euler(opcja), rysujx2x1()])
+        run.place(x=10, y=350)
+
+        signal = tk.Button(
+            text="Change signal aprameters", width=20, height=2, bg="black", fg="red", padx="1", pady="1",
+            command=lambda: [changesignalliczniki(), checkSignal(entrytime), checkSignal(entryphase),
+                             checkSignal(entryamp), checkSignal(entryfrq),
+                             change_signal(entryphase, entryamp, entryfrq, entrytime, entryh), checkczySignalgit()])
+        signal.place(x=160, y=270)
+
+        sine = tk.Radiobutton(
+            text="sine", width=6, height=2, variable=opcja, value="sine",
+        )
+        sine.place(x=270, y=310)
+        sine.invoke()
+
+        triangle = tk.Radiobutton(
+            text="triangular", width=10, height=2, variable=opcja, value="triangle",
+        )
+        triangle.place(x=270, y=340)
+
+        rectangle = tk.Radiobutton(
+            text="rectangular", width=11, height=2, variable=opcja, value="rectangle",
+        )
+        rectangle.place(x=270, y=370)
+
+
+okno = Window()
+
+okno.mainloop()
