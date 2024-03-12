@@ -59,3 +59,50 @@ def wakeUpWithRec(aktualnyczas):
     else:
         value = 0
     return value
+
+def wakeUpWithTri(aktualnyczas):
+    tm = np.arcsin(np.sin(2 * np.pi * frq * aktualnyczas + phi)) * 2 / np.pi
+    return tm
+
+
+# sprawdzanie poprawności wprowadzonych danych
+def isfloat(num):
+    try:
+        float(num)
+        return True
+    except ValueError:
+        return False
+
+
+# pobieranie danych z okienka i przypisanie do odpowiedniej zmiennej
+def checkData(someEntry):
+    global licznik, licznik2
+    wejscie = someEntry.get()
+    if wejscie != "":
+        if isfloat(wejscie):
+            licznik2 += 1
+        elif licznik == 0:
+            tkinter.messagebox.showerror(title="Podana wartość nie jest liczbą.",
+                                         message="Sprawdź czy użyłeś kropki dziesiętnej")
+            licznik = 1
+
+
+# pobieranie danych z okienka i przypisanie do odpowiedniej zmiennej
+def checkSignal(someEntry):
+    global licznik3, licznik4
+    wejscie = someEntry.get()
+    if wejscie != "":
+        if isfloat(wejscie):
+            licznik4 += 1
+        elif licznik3 == 0:
+            tkinter.messagebox.showerror(title="Podana wartość nie jest liczbą.",
+                                         message="Sprawdź czy użyłeś kropki dziesiętnej")
+            licznik3 = 1
+
+
+def checkczywszytstkogit():
+    global licznik2
+    if licznik2 == 6:
+        tkinter.messagebox.showinfo(message="Wartości zapisane poprawnie")
+
+
