@@ -105,4 +105,56 @@ def checkczywszytstkogit():
     if licznik2 == 6:
         tkinter.messagebox.showinfo(message="Wartości zapisane poprawnie")
 
+def checkczySignalgit():
+    global licznik4
+    if licznik4 == 4:
+        tkinter.messagebox.showinfo(message="Wartości zapisane poprawnie")
 
+def changelicznik():
+    global licznik
+    licznik = 0
+
+
+def changelicznik2():
+    global licznik2
+    licznik2 = 0
+
+def changesignalliczniki():
+    global licznik3, licznik4
+    licznik4 = 0
+    licznik3 = 0
+def changen1(entry1, entry2, entry3, entry4, entry5, entry6):
+    global n1, n2, j1, j2, k, b
+    if isfloat(entry1.get()):
+        n1 = float(entry1.get())
+    if isfloat(entry2.get()):
+        n2 = float(entry2.get())
+    if isfloat(entry3.get()):
+        j1 = float(entry3.get())
+    if isfloat(entry4.get()):
+        j2 = float(entry4.get())
+    if isfloat(entry5.get()):
+        b = float(entry5.get())
+    if isfloat(entry6.get()):
+        b = float(entry6.get())
+
+
+def rownanienax1(x2poprzedni):
+    x1prim = x2poprzedni
+    return x1prim
+
+
+def rownanienax2(x2poprzedni, x1poprzedni, aktualnyczas, option):
+    global amp
+    value = option.get()
+    if value == "sine":
+        x2prim = (-b * x2poprzedni * n2 / n1 - k * x1poprzedni + wakeUpWithSin(aktualnyczas) * amp * n2 / n1) / (
+                j1 + j2 * n2 / n1)
+    elif value == "rectangle":
+        x2prim = (-b * x2poprzedni * n2 / n1 - k * x1poprzedni + wakeUpWithRec(aktualnyczas) * amp * n2 / n1) / (
+                j1 + j2 * n2 / n1)
+    elif value == "triangle":
+        x2prim = (-b * x2poprzedni * n2 / n1 - k * x1poprzedni + wakeUpWithTri(aktualnyczas) * amp * n2 / n1) / (
+                j1 + j2 * n2 / n1)
+
+    return x2prim
